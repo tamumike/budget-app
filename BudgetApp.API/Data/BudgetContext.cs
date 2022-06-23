@@ -52,6 +52,9 @@ namespace BudgetApp.API.Data
                 entity.Property(e => e.Type)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Total_Budget).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.Contingency).HasColumnType("decimal(18, 2)");
             });
 
             modelBuilder.Entity<Area>(entity =>

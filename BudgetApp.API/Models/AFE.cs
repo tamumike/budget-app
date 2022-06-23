@@ -17,5 +17,7 @@ namespace BudgetApp.API.Models
         public string Project_Manager { get; set; } = null!;
         public string Status { get; set; } = null!;
         public DateTime? In_Service_Date { get; set; }
+        public decimal? Total_Budget  { get; set; }
+        public decimal? Contingency { get; set; }
     }
 }
