@@ -10,6 +10,7 @@ namespace BudgetApp.API.Data
     {
         Task<IEnumerable<BudgetLineItem>> GetBudgetLineItems();
         Task<BudgetLineItem?> GetSingleBudgetLineItem(int id);
+        Task<IEnumerable<BudgetLineItem>> GetBudgetLineItemsByAFE(string afe);
         Task<IEnumerable<AFE>> GetAFEs();
         Task<AFE?> GetSingleAFE(string afe_no);
         Task<IEnumerable<Area>> GetAreas();

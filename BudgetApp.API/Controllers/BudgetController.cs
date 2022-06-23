@@ -34,6 +34,13 @@ namespace BudgetApp.API.Controllers
             return Ok(budget);
         }
 
+        [HttpGet("Project/{afe}")]
+        public async Task<IActionResult> GetByAFE(string afe)
+        {
+            var budgets = await _repo.GetBudgetLineItemsByAFE(afe);
+            return Ok(budgets);
+        }
+
         [HttpGet("AFEs")]
         public async Task<IActionResult> GetAFEs()
         {

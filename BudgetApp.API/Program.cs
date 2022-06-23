@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IBudgetRepository, BudgetRepository>();
 var app = builder.Build();
-
+app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 // Configure the HTTP request pipeline.
 // if (app.Environment.IsDevelopment())
 // {
