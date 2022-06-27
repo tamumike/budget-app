@@ -1,0 +1,38 @@
+<!-- <p>budget works!</p>
+<p *ngFor="let b of budgetLineItems">
+  {{b.id}}, {{b.afE_Name}}
+</p> -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Gate</th>
+        <th scope="col">Coding</th>
+        <th scope="col">Category WBS Level 1</th>
+        <th scope="col">Account Name WBS Level 2</th>
+        <th scope="col">Scope Activity / Description WBS Level 3</th>
+        <th scope="col">Area</th>
+        <th scope="col">Unit</th>
+        <th scope="col">Qty</th>
+        <th scope="col">$ per Unit</th>
+        <th scope="col">Tax (%)</th>
+        <th scope="col">TOTAL Cost</th>
+        <th scope="col">Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of budgetLineItems">
+        <td>{{item.gate}}</td>
+        <td>{{item.coding}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.account_Description}}</td>
+        <td>{{item.scope_Description}}</td>
+        <td>{{item.area}}</td>
+        <td>{{item.unit}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.unit_Cost | currency}}</td>
+        <td>{{item.tax_Rate | percent}}</td>
+        <td>{{item.total_Cost | currency}}</td>
+        <td>{{item.comment}}</td>
+      </tr>
+    </tbody>
+  </table>

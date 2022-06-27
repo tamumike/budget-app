@@ -23,13 +23,21 @@ namespace BudgetApp.API.Data
 
         public async Task<BudgetLineItem?> GetSingleBudgetLineItem(int id)
         {
+<<<<<<< HEAD
             var budgetLineItem = await _context.BudgetLineItems.Where(b => b.Id == id).FirstOrDefaultAsync();
+=======
+            var budgetLineItem = await _context.BudgetLineItems.Where(b => b.ID == id).FirstOrDefaultAsync();
+>>>>>>> add_spa
             return budgetLineItem;
         }
 
         public async Task<IEnumerable<BudgetLineItem>> GetBudgetLineItemsByAFE(string afe)
         {
+<<<<<<< HEAD
             var budgetLineItems = await _context.BudgetLineItems.Where(b => b.AFE_Id == afe).ToListAsync();
+=======
+            var budgetLineItems = await _context.BudgetLineItems.Where(b => b.AFE_No == afe).ToListAsync();
+>>>>>>> add_spa
             return budgetLineItems;
         }        
 
