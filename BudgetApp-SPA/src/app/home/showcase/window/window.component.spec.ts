@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MetricComponent } from './metric.component';
+import { WindowComponent } from './window.component';
 
-describe('MetricComponent', () => {
-  let component: MetricComponent;
-  let fixture: ComponentFixture<MetricComponent>;
+describe('WindowComponent', () => {
+  let component: WindowComponent;
+  let fixture: ComponentFixture<WindowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MetricComponent ]
+      declarations: [ WindowComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MetricComponent);
+    fixture = TestBed.createComponent(WindowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

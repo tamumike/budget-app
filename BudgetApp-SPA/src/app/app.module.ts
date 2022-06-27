@@ -5,29 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BudgetComponent } from './budget/budget.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { OverviewComponent } from './overview/overview.component';
-import { ReportsComponent } from './reports/reports.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { KpiComponent } from './kpi/kpi.component';
-import { MetricComponent } from './kpi/metric/metric.component';
-import { HeaderComponent } from './header/header.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SidebarComponent } from './home/sidebar/sidebar.component';
+import { ShowcaseComponent } from './home/showcase/showcase.component';
+import { HeaderComponent } from './home/showcase/header/header.component';
+import { WindowComponent } from './home/showcase/window/window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BudgetComponent,
-    SidebarComponent,
-    OverviewComponent,
-    ReportsComponent,
     HomeComponent,
-    KpiComponent,
-    MetricComponent,
+    SearchbarComponent,
+    SidebarComponent,
+    ShowcaseComponent,
     HeaderComponent,
-    SearchbarComponent
+    WindowComponent
   ],
   imports: [
     BrowserModule,
