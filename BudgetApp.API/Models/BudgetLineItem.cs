@@ -1,25 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace BudgetApp.API.Models
 {
     public partial class BudgetLineItem
     {
-        [Key]
-        public int ID { get; set; }
-        public string AFE_No { get; set; } = null!;
-        public string AFE_Name { get; set; } = null!;
-        public int Company { get; set; }
-        public int Property_Code { get; set; }
+        public int Id { get; set; }
+        public string AFE_Id { get; set; } = null!;
         public int Gate { get; set; }
-        public string Coding { get; set; } = null!;
-        public string Category { get; set; } = null!;
-        public string Account_Description { get; set; } = null!;
-        public string Scope_Description { get; set; } = null!;
-        public string? Area { get; set; }
-        public string? Unit { get; set; }
-        public string? Vendor_Name { get; set; }
+        public int WBS_Id { get; set; }
+        public int? Area_Id { get; set; }
+        public int? Unit_Id { get; set; }
+        public string? Vendor { get; set; }
         public double? Quantity { get; set; }
         public decimal Unit_Cost { get; set; }
         public double? Tax_Rate { get; set; }
@@ -31,5 +23,14 @@ namespace BudgetApp.API.Models
         public string? Modified_By { get; set; }
         public int Revision_No { get; set; }
         public bool Is_Active { get; set; }
+
+        public ICollection<AFE> AFEs { get; set; } = null!;
+        public ICollection<Area> Areas { get; set; } = null!;
+        public ICollection<Unit> Units { get; set; } = null!;
+
+        // public virtual AFE AFE { get; set; } = null!;
+        // public virtual Area? Area { get; set; }
+        // public virtual Unit? Unit { get; set; }
+        // public virtual WBS_Dictionary WBS { get; set; } = null!;
     }
 }

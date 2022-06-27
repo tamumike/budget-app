@@ -23,9 +23,14 @@ namespace BudgetApp.API.Data
 
         public async Task<BudgetLineItem?> GetSingleBudgetLineItem(int id)
         {
-            // var budgetLineItem = await _context.BudgetLineItems.Where(b => b.ID == id).FirstOrDefaultAsync();
-            var budgetLineItem = await _context.BudgetLineItems.Where(b => b.ID == id).FirstOrDefaultAsync();
+            var budgetLineItem = await _context.BudgetLineItems.Where(b => b.Id == id).FirstOrDefaultAsync();
             return budgetLineItem;
+        }
+
+        public async Task<IEnumerable<BudgetLineItem>> GetBudgetLineItemsByAFE(string afe)
+        {
+            var budgetLineItems = await _context.BudgetLineItems.Where(b => b.AFE_Id == afe).ToListAsync();
+            return budgetLineItems;
         }        
 
         public async Task<IEnumerable<AFE>> GetAFEs()
@@ -36,7 +41,7 @@ namespace BudgetApp.API.Data
 
         public async Task<AFE?> GetSingleAFE(string afe_no)
         {
-            var AFE = await _context.AFEs.Where(a => a.AFE_No == afe_no).FirstOrDefaultAsync();
+            var AFE = await _context.AFEs.Where(a => a.AFE_Id == afe_no).FirstOrDefaultAsync();
             return AFE;
         }        
 
@@ -48,7 +53,7 @@ namespace BudgetApp.API.Data
 
         public async Task<Area?> GetSingleArea(int id)
         {
-            var area = await _context.Areas.Where(a => a.ID == id).FirstOrDefaultAsync();
+            var area = await _context.Areas.Where(a => a.Id == id).FirstOrDefaultAsync();
             return area;
         }        
 
@@ -60,7 +65,7 @@ namespace BudgetApp.API.Data
 
         public async Task<Unit?> GetSingleUnit(int id)
         {
-            var unit = await _context.Units.Where(u => u.ID == id).FirstOrDefaultAsync();
+            var unit = await _context.Units.Where(u => u.Id == id).FirstOrDefaultAsync();
             return unit;
         }        
 

@@ -4,17 +4,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BudgetApp.API.Models
 {
-    public partial class Area
+    public partial class AFE_Type
     {
-        public Area()
+        public AFE_Type()
         {
-            BudgetLineItems = new HashSet<BudgetLineItem>();
+            Aves = new HashSet<AFE>();
         }
-
         [Key]
         public int Id { get; set; }
         public string Description { get; set; } = null!;
 
-        public virtual ICollection<BudgetLineItem> BudgetLineItems { get; set; }
+        public virtual ICollection<AFE> Aves { get; set; }
     }
 }
