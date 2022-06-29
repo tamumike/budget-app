@@ -23,21 +23,13 @@ namespace BudgetApp.API.Data
 
         public async Task<BudgetLineItem?> GetSingleBudgetLineItem(int id)
         {
-<<<<<<< HEAD
             var budgetLineItem = await _context.BudgetLineItems.Where(b => b.Id == id).FirstOrDefaultAsync();
-=======
-            var budgetLineItem = await _context.BudgetLineItems.Where(b => b.ID == id).FirstOrDefaultAsync();
->>>>>>> add_spa
             return budgetLineItem;
         }
 
         public async Task<IEnumerable<BudgetLineItem>> GetBudgetLineItemsByAFE(string afe)
         {
-<<<<<<< HEAD
             var budgetLineItems = await _context.BudgetLineItems.Where(b => b.AFE_Id == afe).ToListAsync();
-=======
-            var budgetLineItems = await _context.BudgetLineItems.Where(b => b.AFE_No == afe).ToListAsync();
->>>>>>> add_spa
             return budgetLineItems;
         }        
 
@@ -88,12 +80,17 @@ namespace BudgetApp.API.Data
             var vendor = await _context.Vendors.Where(v => v.Code == code).FirstOrDefaultAsync();
             return vendor;
         }
+
+        public async Task<IEnumerable<ProjectSummary>> GetProjectSummaries()
+        {
+            var projectSummaries = await _context.ProjectSummaries.ToListAsync();
+            return projectSummaries;
+        }
+
+        public async Task<IEnumerable<ProjectSummaries_KPI>> GetProjectSummariesKPIs()
+        {
+            var kpis = await _context.ProjectSummaries_KPIs.ToListAsync();
+            return kpis;
+        }
     }
 }
-
-
-
-
-
-
-

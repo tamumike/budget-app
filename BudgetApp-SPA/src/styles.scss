@@ -10,3 +10,17 @@ body {
   height: 100%;
   // background-color: bisque;
 }
+
+.ShowcaseWindow {
+  border: 1px solid black;
+  display: flex;
+
+}
+
+.ShowcaseHeader {
+  border: 1px solid black;
+  display: flex;
+  min-height: 15vh;
+  align-items: center;
+  justify-content: space-around;
+}

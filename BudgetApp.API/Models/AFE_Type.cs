@@ -10,6 +10,7 @@ namespace BudgetApp.API.Models
         {
             Aves = new HashSet<AFE>();
         }
+
         [Key]
         public int Id { get; set; }
         public string Description { get; set; } = null!;

@@ -1,0 +1,34 @@
+<div class="container ShowcaseHeader">
+  <app-title [componentTitle]="title"></app-title>
+  <app-kpi [metrics]="KPIs"></app-kpi>
+  <app-searchbar></app-searchbar>
+</div>
+<div class="container ShowcaseWindow">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Portfolio</th>
+        <th scope="col">Project #</th>
+        <th scope="col">Project Name</th>
+        <th scope="col">Budget</th>
+        <th scope="col">Actuals</th>
+        <th scope="col">EAC</th>
+        <th scope="col">Committed</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of summaries">
+        <!-- <th scope="row">1</th> -->
+        <td>{{x.portfolio}}</td>
+        <td>{{x.afE_Id}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.total_Budget | currency}}</td>
+        <td>{{x.actuals | currency}}</td>
+        <td>{{x.eac | currency}}</td>
+        <td>N/A</td>
+        <td>EDIT</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

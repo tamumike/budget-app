@@ -6,21 +6,27 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
+        <a [routerLink]="['/overview']" (click)="setActive($event)" class="nav-link text-white" aria-current="page" #overview_nav>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
           Overview
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a [routerLink]="['/reports']" (click)="setActive($event)" class="nav-link text-white" #reports_nav>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
           Reports
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a [routerLink]="['/all-projects']" (click)="setActive($event)" class="nav-link text-white active" #all_projects_nav>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
           All Projects
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+          Portfolios:
         </a>
       </li>
     </ul>

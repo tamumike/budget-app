@@ -1,0 +1,7 @@
+<div class="container KPI">
+  <div class="row">
+    <div class="col" *ngFor="let test of x | keyvalue">
+      <app-metric [metric]="test"></app-metric>
+    </div>
+  </div>
+</div>

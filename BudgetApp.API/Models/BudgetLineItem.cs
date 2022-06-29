@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BudgetApp.API.Models
 {
@@ -24,13 +25,13 @@ namespace BudgetApp.API.Models
         public int Revision_No { get; set; }
         public bool Is_Active { get; set; }
 
-        public ICollection<AFE> AFEs { get; set; } = null!;
-        public ICollection<Area> Areas { get; set; } = null!;
-        public ICollection<Unit> Units { get; set; } = null!;
-
-        // public virtual AFE AFE { get; set; } = null!;
-        // public virtual Area? Area { get; set; }
-        // public virtual Unit? Unit { get; set; }
-        // public virtual WBS_Dictionary WBS { get; set; } = null!;
+        [ForeignKey("AFE_Id")]
+        public virtual AFE AFE { get; set; } = null!;
+        [ForeignKey("Area_Id")]
+        public virtual Area? Area { get; set; } = null!;
+        [ForeignKey("Unit_Id")]
+        public virtual Unit? Unit { get; set; } = null!;
+        [ForeignKey("WBS_Id")]
+        public virtual WBS_Dictionary WBS { get; set; } = null!;
     }
 }

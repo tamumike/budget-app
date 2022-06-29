@@ -26,6 +26,7 @@ namespace BudgetApp.API.Models
         // public virtual Portfolio PortfolioNavigation { get; set; } = null!;
         // public virtual Project_Manager Project_ManagerNavigation { get; set; } = null!;
         // public virtual AFE_Type TypeNavigation { get; set; } = null!;
-        public virtual ICollection<BudgetLineItem> BudgetLineItems { get; set; }
+        public virtual ICollection<BudgetLineItem> BudgetLineItems { get; set; } = null!;
+        // public virtual ICollection<Area> Areas { get; set; } = null!;
     }
 }

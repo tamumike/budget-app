@@ -16,5 +16,7 @@ namespace BudgetApp.API.Data
         public DbSet<Area> Areas => Set<Area>();
         public DbSet<Unit> Units => Set<Unit>();
         public DbSet<Vendor> Vendors => Set<Vendor>();
+        public DbSet<ProjectSummary> ProjectSummaries => Set<ProjectSummary>();
+        public DbSet<ProjectSummaries_KPI> ProjectSummaries_KPIs => Set<ProjectSummaries_KPI>();
     }
 }

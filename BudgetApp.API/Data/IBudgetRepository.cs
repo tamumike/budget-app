@@ -19,5 +19,7 @@ namespace BudgetApp.API.Data
         Task<Unit?> GetSingleUnit(int id);
         Task<IEnumerable<Vendor>> GetVendors();
         Task<Vendor?> GetSingleVendor(string code);
+        Task<IEnumerable<ProjectSummary>> GetProjectSummaries();
+        Task<IEnumerable<ProjectSummaries_KPI>> GetProjectSummariesKPIs();
     }
 }

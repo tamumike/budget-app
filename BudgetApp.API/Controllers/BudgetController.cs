@@ -95,7 +95,20 @@ namespace BudgetApp.API.Controllers
         {
             var vendor = await _repo.GetSingleVendor(code);
             return Ok(vendor);
-        }        
+        }
+
+        [HttpGet("AllProjects")]
+        public async Task<IActionResult> GetProjectSummaries()
+        {
+            var summaries = await _repo.GetProjectSummaries();
+            return Ok(summaries);
+        }
+        [HttpGet("AllProjects/KPIs")]
+        public async Task<IActionResult> GetProjectSummariesKPIs()
+        {
+            var kpis = await _repo.GetProjectSummariesKPIs();
+            return Ok(kpis);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

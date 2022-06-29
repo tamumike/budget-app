@@ -27,6 +27,7 @@ namespace BudgetApp.API.Data
         public virtual DbSet<Unit> Units { get; set; } = null!;
         public virtual DbSet<Vendor> Vendors { get; set; } = null!;
         public virtual DbSet<WBS_Dictionary> WBS_Dictionaries { get; set; } = null!;
+        public virtual DbSet<ProjectSummary> ProjectSummaries { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,7 +50,7 @@ namespace BudgetApp.API.Data
                 entity.Property(e => e.Total_Budget).HasColumnType("decimal(18, 2)");
 
                 // entity.HasOne(d => d.CompanyNavigation)
-                //     .WithMany(p => p.Aves)
+                //     .WithMany(p => p.AFEs)
                 //     .HasForeignKey(d => d.Company)
                 //     .OnDelete(DeleteBehavior.ClientSetNull)
                 //     .HasConstraintName("FK_AFEs_Companies");
@@ -67,7 +68,7 @@ namespace BudgetApp.API.Data
                 //     .HasConstraintName("FK_AFEs_Project_Managers");
 
                 // entity.HasOne(d => d.TypeNavigation)
-                //     .WithMany(p => p.Aves)
+                //     .WithMany(p => p.AFEs)
                 //     .HasForeignKey(d => d.Type)
                 //     .OnDelete(DeleteBehavior.ClientSetNull)
                 //     .HasConstraintName("FK_AFEs_AFE_Types");
@@ -172,6 +173,39 @@ namespace BudgetApp.API.Data
                     .IsUnicode(false);
 
                 entity.Property(e => e.Scope_Description).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<ProjectSummary>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("ProjectSummaries");
+
+                entity.Property(e => e.AFE_Id)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Actuals).HasColumnType("decimal(38, 2)");
+
+                entity.Property(e => e.EAC).HasColumnType("numeric(2, 2)");
+
+                entity.Property(e => e.Name).IsUnicode(false);
+
+                entity.Property(e => e.Total_Budget).HasColumnType("decimal(18, 2)");
+            });
+
+            modelBuilder.Entity<ProjectSummaries_KPI>(entity => {
+                
+                entity.HasNoKey();
+
+                entity.ToView("ProjectSummaries_KPIs");
+
+                entity.Property(e => e.Budget).HasColumnType("decimal(38, 2)");
+
+                entity.Property(e => e.Actuals).HasColumnType("decimal(38, 2)");
+
+                entity.Property(e => e.EAC).HasColumnType("numeric(2, 2)");
+
             });
 
             OnModelCreatingPartial(modelBuilder);
