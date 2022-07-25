@@ -1,4 +1,4 @@
-export class ProjectSummary {
+export interface ProjectSummary {
 
   afe_Id: string;
   name: string;

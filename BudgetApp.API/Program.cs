@@ -5,9 +5,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(opt => 
+{
+    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+});
+
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// builder.Services.AddAutoMapper(typeof(BudgetRepository).Assembly);
 builder.Services.AddScoped<IBudgetRepository, BudgetRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 // Configure the HTTP request pipeline.

@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using BudgetApp.API.Data;
+using BudgetApp.API.DTOs;
+using BudgetApp.API.Helpers;
+using BudgetApp.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -14,9 +18,11 @@ namespace BudgetApp.API.Controllers
     {
         private readonly ILogger<BudgetController> _logger;
         private readonly IBudgetRepository _repo;
+        private readonly IMapper _mapper;
 
-        public BudgetController(ILogger<BudgetController> logger, IBudgetRepository repo)
+        public BudgetController(ILogger<BudgetController> logger, IBudgetRepository repo, IMapper mapper)
         {
+            _mapper = mapper;
             _logger = logger;
             _repo = repo;
         }
@@ -39,6 +45,29 @@ namespace BudgetApp.API.Controllers
         {
             var budgets = await _repo.GetBudgetLineItemsByAFE(afe);
             return Ok(budgets);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBudgetLineItem(AddBudgetLineItem_DTO addBudgetLineItem_DTO)
+        {
+            var budgetLineItemToCreate = _mapper.Map<BudgetLineItem>(addBudgetLineItem_DTO);
+            var createdBudgetLineItem = await _repo.CreateBudgetLineItem(budgetLineItemToCreate);
+
+            return Ok(createdBudgetLineItem);
+        }
+
+        [HttpPost("update/{id}")]
+        public async Task<IActionResult> UpdateBudgetLineItem(UpdateBudgetLineItem_DTO updateBudgetLineItem_DTO, int id)
+        {
+            var parentBudgetLineItem = await _repo.GetSingleBudgetLineItem(id);
+            
+            if (parentBudgetLineItem == null) {
+                return BadRequest();
+            }
+
+            var budgetLineItemToUpdate = _mapper.Map<BudgetLineItem>(updateBudgetLineItem_DTO);
+            var updatedBudgetLineItem = await _repo.UpdateBudgetLineItem(budgetLineItemToUpdate, parentBudgetLineItem);
+            return Ok(updatedBudgetLineItem);
         }
 
         [HttpGet("AFEs")]
@@ -96,6 +125,19 @@ namespace BudgetApp.API.Controllers
             var vendor = await _repo.GetSingleVendor(code);
             return Ok(vendor);
         }
+        [HttpGet("Portfolios")]
+        public async Task<IActionResult> GetPortfolios()
+        {
+            var portfolios = await _repo.GetPortfolios();
+            return Ok(portfolios);
+        }
+
+        [HttpGet("Portfolios/{code}")]
+        public async Task<IActionResult> GetSinglePortfolio(int code)
+        {
+            var portfolio = await _repo.GetSinglePortfolio(code);
+            return Ok(portfolio);
+        }
 
         [HttpGet("AllProjects")]
         public async Task<IActionResult> GetProjectSummaries()
@@ -108,6 +150,27 @@ namespace BudgetApp.API.Controllers
         {
             var kpis = await _repo.GetProjectSummariesKPIs();
             return Ok(kpis);
+        }
+        [HttpGet("Overview/KPIs/{afe_Id}")]
+        public async Task<IActionResult> GetProjectSummary(string afe_Id)
+        {
+            var summary = await _repo.GetProjectSummary(afe_Id);
+            var summaryToReturn = _mapper.Map<ProjectSummary_DTO>(summary);
+            return Ok(summaryToReturn);
+        }
+
+        [HttpGet("WBS")]
+        public async Task<IActionResult> GetWBS([FromQuery]WBSParams wbsParams)
+        {
+            var wbs_dict = await _repo.GetWBS_Dictionary(wbsParams);
+            return Ok(wbs_dict);
+        }
+
+        [HttpGet("WBS/{id}")]
+        public async Task<IActionResult> GetWBS(int Id)
+        {
+            var wbs = await _repo.GetWBS_Dictionary(Id);
+            return Ok(wbs);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

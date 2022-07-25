@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace BudgetApp.API.Models
 {
@@ -21,6 +22,7 @@ namespace BudgetApp.API.Models
         public string Project_Type { get; set; } = null!;
         public string Coding { get; set; } = null!;
 
+        [JsonIgnore]
         public virtual ICollection<BudgetLineItem> BudgetLineItems { get; set; }
     }
 }

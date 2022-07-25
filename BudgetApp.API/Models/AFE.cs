@@ -21,6 +21,7 @@ namespace BudgetApp.API.Models
         public string Status { get; set; } = null!;
         public DateTime? In_Service_Date { get; set; }
         public decimal? Total_Budget { get; set; }
+        public decimal? Estimate_At_Completion { get; set; }
 
         // public virtual Company CompanyNavigation { get; set; } = null!;
         // public virtual Portfolio PortfolioNavigation { get; set; } = null!;

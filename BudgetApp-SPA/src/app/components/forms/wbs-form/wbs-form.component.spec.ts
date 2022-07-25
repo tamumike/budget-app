@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowcaseComponent } from './showcase.component';
+import { WbsFormComponent } from './wbs-form.component';
 
-describe('ShowcaseComponent', () => {
-  let component: ShowcaseComponent;
-  let fixture: ComponentFixture<ShowcaseComponent>;
+describe('WbsFormComponent', () => {
+  let component: WbsFormComponent;
+  let fixture: ComponentFixture<WbsFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowcaseComponent ]
+      declarations: [ WbsFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ShowcaseComponent);
+    fixture = TestBed.createComponent(WbsFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

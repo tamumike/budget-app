@@ -4,7 +4,7 @@
   <app-searchbar></app-searchbar>
 </div>
 <div class="container ShowcaseWindow">
-  <table class="table">
+  <table class="table" style="text-align:center;">
     <thead>
       <tr>
         <th scope="col">Portfolio</th>
@@ -18,16 +18,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let x of summaries">
+      <tr *ngFor="let x of summaries" (click)="navToProject(x.afE_Id)">
         <!-- <th scope="row">1</th> -->
         <td>{{x.portfolio}}</td>
         <td>{{x.afE_Id}}</td>
         <td>{{x.name}}</td>
-        <td>{{x.total_Budget | currency}}</td>
+        <td [ngClass]="{'alert': isBudgetExceeded(x)}">{{x.total_Budget | currency}}</td>
         <td>{{x.actuals | currency}}</td>
         <td>{{x.eac | currency}}</td>
         <td>N/A</td>
-        <td>EDIT</td>
+        <td style="cursor: pointer;"><i class="fa fa-pen"></i> EDIT</td>
       </tr>
     </tbody>
   </table>

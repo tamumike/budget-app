@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataServiceService } from '../services/data-service.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class AllProjectsComponent implements OnInit {
   summaries: any;
   @Output() KPIs: any = [];
 
-  constructor(private dataService: DataServiceService, private route: ActivatedRoute) { }
+  constructor(private dataService: DataServiceService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getData();
@@ -31,11 +31,11 @@ export class AllProjectsComponent implements OnInit {
     });
   }
 
-  getKPIs(): void {
-    this.dataService.getProjectSumariesKPIs().subscribe(response => {
-      this.KPIs = Object.assign(response);
-    }, error => {
-      console.log('overview - getKPIs');
-    });
+  navToProject(afe_id: string): void {
+    this.router.navigate(['overview/' + afe_id]);
+  }
+
+  isBudgetExceeded(data: any) {
+    return data.total_Budget < data.actuals;
   }
 }

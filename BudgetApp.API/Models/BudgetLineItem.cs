@@ -22,6 +22,7 @@ namespace BudgetApp.API.Models
         public string Created_By { get; set; } = null!;
         public DateTime? Date_Modified { get; set; }
         public string? Modified_By { get; set; }
+        public int Parent_Id { get; set; }
         public int Revision_No { get; set; }
         public bool Is_Active { get; set; }
 

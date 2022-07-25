@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./metric.component.scss']
 })
 export class MetricComponent implements OnInit {
-  types: string[] = ['budget', 'eac', 'actuals'];
+  types: string[] = ['budget', 'eac', 'actuals', 'total_Budget'];
   @Input() metric: any;
 
   constructor() { }

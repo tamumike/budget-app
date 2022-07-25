@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WindowComponent } from './window.component';
+import { AddBudgetFormComponent } from './add-budget-form.component';
 
-describe('WindowComponent', () => {
-  let component: WindowComponent;
-  let fixture: ComponentFixture<WindowComponent>;
+describe('AddBudgetFormComponent', () => {
+  let component: AddBudgetFormComponent;
+  let fixture: ComponentFixture<AddBudgetFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WindowComponent ]
+      declarations: [ AddBudgetFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WindowComponent);
+    fixture = TestBed.createComponent(AddBudgetFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

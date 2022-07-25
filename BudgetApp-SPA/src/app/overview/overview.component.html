@@ -1,5 +1,44 @@
-<div class="container ShowcaseHeader">
-  <app-title [componentTitle]="title"></app-title>
-</div>
-<div class="container ShowcaseWindow">
+<div class="Overview">
+  <div class="container ShowcaseHeader">
+    <app-title [componentTitle]="title"></app-title>
+    <app-kpi [metrics]="KPI"></app-kpi>
+    <button class="btn btn-primary" (click)="navToAddBudgetLineItem()">Add Item</button>
+  </div>
+  <div class="container ShowcaseWindow">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Gate</th>
+          <th scope="col">Coding</th>
+          <th scope="col">Category</th>
+          <th scope="col">Account Name</th>
+          <th scope="col">Scope Activity / Description</th>
+          <th scope="col">Area</th>
+          <th scope="col">Unit</th>
+          <th scope="col">Qty</th>
+          <th scope="col">$ per Unit</th>
+          <th scope="col">Tax (%)</th>
+          <th scope="col">TOTAL Cost</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let x of budgetLineItems">
+          <!-- <th scope="row">1</th> -->
+          <td>{{x.gate}}</td>
+          <td>{{x.wbs.coding}}</td>
+          <td>{{x.wbs.category}}</td>
+          <td>{{x.wbs.account_Description}}</td>
+          <td>{{x.wbs.scope_Description}}</td>
+          <td>{{x.area?.description}}</td>
+          <td>{{x.unit?.description}}</td>
+          <td>{{x.quantity}}</td>
+          <td>{{x.unit_Cost | currency}}</td>
+          <td>{{x.tax_Rate | percent}}</td>
+          <td>{{x.total_Cost | currency}}</td>
+          <td><a (click)="navToBudgetLineItemDetail(x.id)">EDIT</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

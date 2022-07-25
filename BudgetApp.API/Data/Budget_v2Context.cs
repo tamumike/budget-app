@@ -48,6 +48,7 @@ namespace BudgetApp.API.Data
                     .IsUnicode(false);
 
                 entity.Property(e => e.Total_Budget).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.Estimate_At_Completion).HasColumnType("decimal(18, 2)");
 
                 // entity.HasOne(d => d.CompanyNavigation)
                 //     .WithMany(p => p.AFEs)
@@ -162,7 +163,7 @@ namespace BudgetApp.API.Data
 
             modelBuilder.Entity<WBS_Dictionary>(entity =>
             {
-                entity.ToTable("WBS_Dictionary");
+                entity.ToTable("WBS_Dictionaries");
 
                 entity.Property(e => e.Account_Description).IsUnicode(false);
 

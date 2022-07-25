@@ -1,0 +1,19 @@
+<div [formGroup]="wbsForm">
+  <label for="category">WBS Category:</label>
+  <select class="form-select" formControlName="category" (change)="categoryChange()" #Category>
+    <option></option>
+    <option *ngFor="let category of wbsOptions['category']">{{category}}</option>
+  </select>
+
+  <label for="account_Description">WBS Account Description:</label>
+  <select class="form-select" formControlName="account_Description" (change)="accountDescriptionChange()" #account_Description>
+    <option></option>
+    <option *ngFor="let x of wbsOptions['account_Description']">{{x}}</option>
+  </select>
+
+  <label for="scope_Description">WBS Scope Description:</label>
+  <select class="form-select" formControlName="scope_Description" #scope_Description>
+    <option></option>
+    <option *ngFor="let x of wbsOptions['scope_Description']">{{x}}</option>
+  </select>
+</div>
