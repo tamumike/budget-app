@@ -2,10 +2,20 @@
   <div class="container ShowcaseHeader">
     <app-title [componentTitle]="title"></app-title>
     <app-kpi [metrics]="KPI"></app-kpi>
-    <button class="btn btn-primary" (click)="navToAddBudgetLineItem()">Add Item</button>
+    <app-searchbar></app-searchbar>
+  </div>
+  <div class="container d-flex m-0 p02 justify-content-between" style="min-width: 100%;">
+    <div class="container m-0 p-0 d-flex">
+      <button class="btn btn-primary btn-sm m-1" (click)="goBack()"><i class="fa-solid fa-circle-arrow-left"></i> Back</button>
+    </div>
+    <div class="container d-flex m-0 p-0 justify-content-end">
+      <button class="btn btn-primary btn-sm m-1" (click)="navToProjectOverview()">Project Overview</button>
+      <button class="btn btn-primary btn-sm m-1" (click)="navToAddBudgetLineItem()"><i class="fas fa-regular fa-circle-plus"></i> Add Item</button>
+      <button class="btn btn-success btn-sm m-1"><i class="fa-solid fa-download"></i> Import</button>
+    </div>
   </div>
   <div class="container ShowcaseWindow">
-    <table class="table">
+    <table class="table" style="text-align:center;">
       <thead>
         <tr>
           <th scope="col">Gate</th>
@@ -24,7 +34,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let x of budgetLineItems">
-          <!-- <th scope="row">1</th> -->
           <td>{{x.gate}}</td>
           <td>{{x.wbs.coding}}</td>
           <td>{{x.wbs.category}}</td>
@@ -33,10 +42,10 @@
           <td>{{x.area?.description}}</td>
           <td>{{x.unit?.description}}</td>
           <td>{{x.quantity}}</td>
-          <td>{{x.unit_Cost | currency}}</td>
+          <td>{{x.unit_Cost | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
           <td>{{x.tax_Rate | percent}}</td>
-          <td>{{x.total_Cost | currency}}</td>
-          <td><a (click)="navToBudgetLineItemDetail(x.id)">EDIT</a></td>
+          <td>{{x.total_Cost | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+          <td style="cursor: pointer;"><a (click)="navToBudgetLineItemDetail(x.id)"><i class="fa fa-pen"></i> </a></td>
         </tr>
       </tbody>
     </table>

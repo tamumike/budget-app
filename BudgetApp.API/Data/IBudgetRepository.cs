@@ -32,6 +32,7 @@ namespace BudgetApp.API.Data
         Task<IEnumerable<ProjectSummaries_KPI>> GetProjectSummariesKPIs();
         Task<IEnumerable<WBS_Dictionary>> GetWBS_Dictionary(WBSParams wbsParams);
         Task<WBS_Dictionary?> GetWBS_Dictionary(int Id);
+        Task<string> ImportInvoiceData(IFormFile file);
         // Task<IEnumerable<WBS_Dictionary>> GetWBS_Dictionary(string category);
         // Task<IEnumerable<WBS_Dictionary>> GetWBS_Dictionary(string category, string account);
         // Task<IEnumerable<WBS_Dictionary>> GetWBS_Dictionary(string category, string account, string scope);

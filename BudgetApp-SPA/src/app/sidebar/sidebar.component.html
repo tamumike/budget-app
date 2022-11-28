@@ -1,13 +1,13 @@
   <div class="Sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 100%;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
       <!-- <i class="fa-light fa-magnifying-glass-dollar" style="width:40px; height:32px;"></i> -->
-      <span class="fs-4">Budget App</span>
+      <span class="fs-4"><i class="fa-solid fa-sack-dollar"></i> Budget App</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a [routerLink]="['/overview']" (click)="setActive($event)" class="nav-link text-white" aria-current="page" #overview_nav>
+        <a [routerLink]="['/overview/212131']" (click)="setActive($event)" class="nav-link text-white" aria-current="page" #overview_nav>
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
           Overview
         </a>
@@ -35,7 +35,7 @@
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="../../../assets/lucidbrand.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>User</strong>
+        <strong>{{userInfo?.DisplayName}}</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
         <li><a class="dropdown-item" href="#">New project...</a></li>

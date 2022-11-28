@@ -1,4 +1,6 @@
-<div class="container Metric d-flex justify-content-center">
-  <p>{{formatMetric(metric.key) ? (metric.value | currency) : metric.value}}</p>
-  <p>{{metric.key | uppercase}}</p>
+<div class="container Metric d-flex justify-content-center" [ngClass]="{'warning': isWarning(metric.key)}">
+  <p class="m-0 MetricValue">{{formatMetric(metric.key) ? (metric.value | currency : 'USD' : 'symbol' : '1.0-0') : metric.value | number}}</p>
+  <p class="m-0 MetricKey">{{formatKey(metric.key)}}</p>
 </div>
+
+<!-- <td [ngClass]="{'alert': isBudgetExceeded(x)}">{{x.total_Budget | currency}}</td> -->

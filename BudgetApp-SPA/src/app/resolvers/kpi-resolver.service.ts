@@ -18,7 +18,7 @@ resolve(route: ActivatedRouteSnapshot) {
       this.router.navigate(['all-projects']);
       return of(null);
     })
-  )
+  );
 }
 
 }

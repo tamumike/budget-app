@@ -6,6 +6,7 @@ import { AddBudgetFormComponent } from './components/forms/add-budget-form/add-b
 import { WbsFormComponent } from './components/forms/wbs-form/wbs-form.component';
 import { HomeComponent } from './home/home.component';
 import { OverviewComponent } from './overview/overview.component';
+import { ProjectOverviewComponent } from './overview/project-overview/project-overview.component';
 import { ReportsComponent } from './reports/reports.component';
 import { AddBudgetLineItemResolverService } from './resolvers/add-budget-line-item-resolver.service';
 import { AllProjectsResolverService } from './resolvers/all-projects-resolver.service';
@@ -14,7 +15,9 @@ import { DetailBudgetLineItemResolverService } from './resolvers/detail-budget-l
 import { KpiResolverService } from './resolvers/kpi-resolver.service';
 import { OverviewResolverService } from './resolvers/overview-resolver.service';
 import { UnitResolverService } from './resolvers/unit-resolver.service';
+import { UserinfoResolverService } from './resolvers/userinfo-resolver.service';
 import { WbsDictionaryResolverService } from './resolvers/wbs-dictionary-resolver.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -35,7 +38,14 @@ export const appRoutes: Routes = [
       areas: AreaResolverService,
       units: UnitResolverService },
     component: DetailBudgetLineItemComponent },
-  { path: 'reports', component: ReportsComponent },
+  { path: 'project-overview/:afe_id',
+    resolve: {
+      data: OverviewResolverService,
+      kpi: KpiResolverService,
+      areas: AreaResolverService,
+      units: UnitResolverService },
+    component: ProjectOverviewComponent },
+  { path: 'reports',  component: ReportsComponent },
   { path: 'all-projects', resolve: { data: AllProjectsResolverService }, component: AllProjectsComponent },
   { path: '**', redirectTo: 'all-projects', pathMatch: 'full'}
 ]

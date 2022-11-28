@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "Cuecx0i+LeVfRraa4DDfyPsgULwhmRM1iVaj108Kvwc=",
+  "Source": "BudgetApp.API",
+  "BasePath": "_content/BudgetApp.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BudgetApp.API\\wwwroot",
+      "Source": "BudgetApp.API",
+      "ContentRoot": "C:\\Users\\mlinden\\source\\repos\\BudgetApp\\BudgetApp.API\\wwwroot\\",
+      "BasePath": "_content/BudgetApp.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\mlinden\\source\\repos\\BudgetApp\\BudgetApp.API\\wwwroot\\Uploads\\Order List 2022 06 20_Modified.xlsx",
+      "SourceId": "BudgetApp.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mlinden\\source\\repos\\BudgetApp\\BudgetApp.API\\wwwroot\\",
+      "BasePath": "_content/BudgetApp.API",
+      "RelativePath": "Uploads/Order List 2022 06 20_Modified.xlsx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Order List 2022 06 20_Modified.xlsx"
+    }
+  ]
+}

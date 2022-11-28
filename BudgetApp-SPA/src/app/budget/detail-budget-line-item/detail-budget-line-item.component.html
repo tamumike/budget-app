@@ -1,89 +1,84 @@
 <div class="container ShowcaseHeader">
   <app-title [componentTitle]="title"></app-title>
 </div>
-<div class="container ShowcaseWindow AddBudgetLineItem">
-  <form [formGroup]="createBudgetLineItemForm" (ngSubmit)="submit()">
+<div class="container ShowcaseWindow">
+  <div class="DetailBudgetLineItem">
+    <form [formGroup]="createBudgetLineItemForm" (ngSubmit)="submit()">
 
-     <!-- AFE ID -->
-    <!-- <label for="afE_Id">AFE ID:</label>
-    <input
-    class="form-control form-control-sm"
-    type="text"
-    formControlName="afE_Id"
-    readonly
-    aria-label=".form-control-sm example"> -->
+      <!-- Gate -->
+      <label for="gate">Gate:</label>
+      <input
+      class="form-control form-control-sm"
+      type="text"
+      formControlName="gate"
+      aria-label=".form-control-sm example">
 
-    <!-- Gate -->
-    <label for="gate">Gate:</label>
-    <input
-    class="form-control form-control-sm"
-    type="text"
-    formControlName="gate"
-    aria-label=".form-control-sm example">
+      <!-- WBS_Id -->
+      <app-wbs-form [wbsForm]="createBudgetLineItemForm.get('wbsForm')" [wbsInfo]="wbsInfo"></app-wbs-form>
 
-    <!-- WBS_Id -->
-    <app-wbs-form [wbsForm]="createBudgetLineItemForm.get('wbsForm')" [wbsInfo]="wbsInfo"></app-wbs-form>
+      <!-- Area_Id -->
+      <label for="area_Id">Area:</label>
+      <select class="form-select" formControlName="area_Id">
+        <option></option>
+        <option *ngFor="let x of areas" value={{x.id}}>{{x.description}}</option>
+      </select>
 
-    <!-- Area_Id -->
-    <label for="area_Id">Area:</label>
-    <select class="form-select" formControlName="area_Id">
-      <option></option>
-      <option *ngFor="let x of areas" value={{x.id}}>{{x.description}}</option>
-    </select>
+      <!-- Unit_Id -->
+      <label for="unit_Id">Unit:</label>
+      <select class="form-select" formControlName="unit_Id">
+        <option></option>
+        <option *ngFor="let x of units" value={{x.id}}>{{x.description}}</option>
+      </select>
 
-    <!-- Unit_Id -->
-    <label for="unit_Id">Unit:</label>
-    <select class="form-select" formControlName="unit_Id">
-      <option></option>
-      <option *ngFor="let x of units" value={{x.id}}>{{x.description}}</option>
-    </select>
+      <!-- Quantity -->
+      <label for="quantity">Quantity:</label>
+      <input
+      class="form-control form-control-sm"
+      type="text"
+      formControlName="quantity"
+      (change)="costMetricsChange($event)"
+      aria-label=".form-control-sm example">
 
-    <!-- Quantity -->
-    <label for="quantity">Quantity:</label>
-    <input
-    class="form-control form-control-sm"
-    type="text"
-    formControlName="quantity"
-    (change)="costMetricsChange($event)"
-    aria-label=".form-control-sm example">
+      <!-- Unit Cost -->
+      <label for="unit_Cost">Unit Cost:</label>
+      <input
+      class="form-control form-control-sm"
+      type="text"
+      (change)="costMetricsChange($event)"
+      formControlName="unit_Cost">
 
-    <!-- Unit Cost -->
-    <label for="unit_Cost">Unit Cost:</label>
-    <input
-    class="form-control form-control-sm"
-    type="text"
-    (change)="costMetricsChange($event)"
-    formControlName="unit_Cost">
+      <!-- tax_Rate -->
+      <label for="tax_Rate">Tax Rate:</label>
+      <input
+      class="form-control form-control-sm"
+      type="text"
+      formControlName="tax_Rate"
+      (change)="costMetricsChange($event.srcElement)"
+      aria-label=".form-control-sm example">
 
-    <!-- tax_Rate -->
-    <label for="tax_Rate">Tax Rate:</label>
-    <input
-    class="form-control form-control-sm"
-    type="text"
-    formControlName="tax_Rate"
-    (change)="costMetricsChange($event.srcElement)"
-    aria-label=".form-control-sm example">
+      <!-- Total Cost -->
+      <label for="total_Cost">Total Cost:</label>
+      <input
+      class="form-control form-control-sm"
+      type="text"
+      formControlName="total_Cost"
+      readonly
+      (change)="transformToCurrency($event)"
+      aria-label=".form-control-sm example">
 
-    <!-- Total Cost -->
-    <label for="total_Cost">Total Cost:</label>
-    <input
-    class="form-control form-control-sm"
-    type="text"
-    formControlName="total_Cost"
-    readonly
-    (change)="transformToCurrency($event)"
-    aria-label=".form-control-sm example">
+      <!-- Comment -->
+      <label for="comment">Comment:</label>
+      <input
+      class="form-control form-control-sm"
+      type="text"
+      formControlName="comment"
+      aria-label=".form-control-sm example">
 
-    <!-- Comment -->
-    <label for="comment">Comment:</label>
-    <input
-    class="form-control form-control-sm"
-    type="text"
-    formControlName="comment"
-    aria-label=".form-control-sm example">
+      <div class="container m-2 p-2">
+        <button class="btn btn-primary btn-sm m-2" type="submit">Submit</button>
+        <button class="btn btn-sm btn-danger" (click)="cancel($event)">Cancel</button>
+      </div>
 
-    <button class="btn btn-primary" type="submit">Submit</button>
-    <button class="btn btn-danger" (click)="cancel($event)">Cancel</button>
-
-  </form>
+    </form>
+  </div>
 </div>

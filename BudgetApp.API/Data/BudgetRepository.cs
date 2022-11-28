@@ -198,6 +198,11 @@ namespace BudgetApp.API.Data
         {
             var wbs = await _context.WBS_Dictionaries.Where(w => w.Id == Id).FirstOrDefaultAsync();
             return wbs;
-        }     
+        }
+
+        public Task<string> ImportInvoiceData(IFormFile file)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

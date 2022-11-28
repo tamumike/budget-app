@@ -173,6 +173,24 @@ namespace BudgetApp.API.Controllers
             return Ok(wbs);
         }
 
+        [HttpPost("import")]
+        public async Task<IActionResult> ImportExcelData([FromForm]IFormFile file)
+        {
+            var fileObj = file.FileName;
+            var mainPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads");
+
+            if(!Directory.Exists(mainPath))
+            {
+                Directory.CreateDirectory(mainPath);
+            }
+            var filePath = Path.Combine(mainPath, file.FileName);
+            using (System.IO.Stream stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return Ok(mainPath);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

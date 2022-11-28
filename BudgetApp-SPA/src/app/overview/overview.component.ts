@@ -20,7 +20,7 @@ export class OverviewComponent implements OnInit {
       this.budgetLineItems = data['data'];
       this.currentProjectId = data['data']['afe_id'];
       this.KPI.push(data['kpi']);
-      this.title = `${this.title} - ${this.currentProjectId}`;
+      // this.title = `${this.title} - ${this.currentProjectId}`;
     });
   }
 
@@ -30,6 +30,14 @@ export class OverviewComponent implements OnInit {
 
   navToBudgetLineItemDetail(id?: number) {
     this.router.navigate(['detail-budget-line-item' + '/' + id]);
+  }
+
+  navToProjectOverview() {
+    this.router.navigate([`project-overview/${this.currentProjectId}`])
+  }
+
+  goBack() {
+    this.router.navigate(['all-projects']);
   }
 
 }

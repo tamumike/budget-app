@@ -1,0 +1,82 @@
+<div class="container ProjectOverview p-0 m-0">
+  <div class="container ShowcaseHeader">
+    <app-title [componentTitle]="title"></app-title>
+    <app-kpi [metrics]="KPI"></app-kpi>
+    <!-- <app-searchbar></app-searchbar> -->
+  </div>
+  <div class="container d-flex m-0 p02 justify-content-between" style="min-width: 100%;">
+    <div class="container m-0 p-0 d-flex">
+      <button class="btn btn-primary btn-sm m-1" (click)="goBack()"><i class="fa-solid fa-circle-arrow-left"></i> Back</button>
+    </div>
+    <div class="container d-flex m-0 p-0 justify-content-end">
+    </div>
+  </div>
+  <div class="container ShowcaseWindow p-1 m-0">
+    <div class="container">
+    <dx-data-grid
+        id="gridContainer"
+        [dataSource]="dataSource"
+        keyExpr="id"
+        [allowColumnReordering]="true"
+        [showBorders]="true"
+        [focusedRowEnabled]="true"
+        [(focusedRowKey)]="focusedRowKey"
+        [(autoNavigateToFocusedRow)]="autoNavigateToFocusedRow"
+        (onFocusedRowChanging)="onFocusedRowChanging($event)"
+        (onFocusedRowChanged)="onFocusedRowChanged($event)"
+      >
+      <dxo-editing
+        mode="popup"
+        [refreshMode]="refreshMode"
+        [allowAdding]="true"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+      >
+        <dxo-popup
+          title="Edit Budget Line Item"
+          [showTitle]="true"
+        >
+        </dxo-popup>
+        <dxo-form>
+          <dxi-item dataField="wbs.category"></dxi-item>
+          <dxi-item dataField="wbs.account_Description"></dxi-item>
+          <dxi-item dataField="wbs.scope_Description"></dxi-item>
+          <dxi-item dataField="unit_Id"></dxi-item>
+          <dxi-item dataField="gate"></dxi-item>
+          <dxi-item dataField="area_Id"></dxi-item>
+          <dxi-item dataField="quantity"></dxi-item>
+          <dxi-item dataField="unit_Cost"></dxi-item>
+          <dxi-item dataField="tax_Rate"></dxi-item>
+          <dxi-item dataField="total_Cost"></dxi-item>
+          <dxi-item dataField="comment" editorType="dxTextArea" [colSpan]="2"></dxi-item>
+        </dxo-form>
+      </dxo-editing>
+      <dxi-column dataField="wbs.account_Description" caption="Account Description" [groupIndex]="1"></dxi-column>
+      <dxi-column dataField="wbs.scope_Description" caption="Scope Description"></dxi-column>
+      <dxi-column dataField="unit_Id" caption="Unit">
+        <dxo-lookup [dataSource]="units" displayExpr="description" valueExpr="id"></dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="gate" caption="Gate"></dxi-column>
+      <dxi-column dataField="area_Id" caption="Area">
+        <dxo-lookup [dataSource]="areas" displayExpr="description" valueExpr="id"></dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="quantity" dataType="number"></dxi-column>
+      <dxi-column dataField="unit_Cost" dataType="number" caption="$ / Unit" format="currency"></dxi-column>
+      <dxi-column dataField="tax_Rate" dataType="number" format="percent"></dxi-column>
+      <dxi-column dataField="total_Cost" dataType="number" format="currency"></dxi-column>
+      <dxi-column dataField="wbs.category" caption="Category" [groupIndex]="0"></dxi-column>
+      <dxi-column dataField="comment" caption="Comment" [visible]="false"></dxi-column>
+
+      <dxo-summary>
+        <dxi-group-item column="total_Cost" summaryType="sum" valueFormat="currency" displayFormat="{0}" [alignByColumn]="true"></dxi-group-item>
+      </dxo-summary>
+
+      <dxo-search-panel [visible]="true"></dxo-search-panel>
+      <dxo-paging [pageSize]="20"></dxo-paging>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+    </dx-data-grid>
+  </div>
+    <!-- <app-budget-focus [data]="focusedData" ></app-budget-focus> -->
+  </div>
+</div>

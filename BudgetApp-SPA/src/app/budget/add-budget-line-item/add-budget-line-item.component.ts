@@ -102,4 +102,17 @@ export class AddBudgetLineItemComponent implements OnInit {
     }
   }
 
+  costMetricsChange(event: any) {
+    const formValue = this.createBudgetLineItemForm.value;
+    const tax_Rate = formValue.tax_Rate;
+    const quantity = formValue.quantity;
+    const total_Cost = formValue.total_Cost;
+    const unit_Cost = formValue.unit_Cost;
+
+    let total = (quantity * unit_Cost);
+    total = total + (tax_Rate * total);
+    this.createBudgetLineItemForm.patchValue({total_Cost: total});
+    // console.log(`unit_cost: ${unit_Cost}, tax_Rate: ${tax_Rate}, quantity: ${quantity}, total_Cost: ${total_Cost}, total: ${total}`);
+  }
+
 }
